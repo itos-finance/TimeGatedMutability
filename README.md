@@ -5,6 +5,8 @@ Libraries and Facets for adding Time-Gated contract mutability.
 Our prescriptive stance is that human-reviewed security can be good but is never 100% secure.
 It is irresponsible for smart contracts to not include operational failsafes like circuit-breakers.
 
+This repository contains useful utilities for adding said failsafes.
+
 ## Mutability
 Once an exploit is found, there should be a way to patch them but there arises a problem of mutability. 
 If the contract is completely mutable, it is prone to rugs, incorrect parameterization, and backwards-compat breaks.
