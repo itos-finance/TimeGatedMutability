@@ -1,41 +1,66 @@
-# TimeGatedMutability
-Libraries and Facets for adding Time-Gated contract mutability.
+## Foundry
 
-## Security
-Our prescriptive stance is that human-reviewed security can be good but is never 100% secure.
-It is irresponsible for smart contracts to not include operational failsafes like circuit-breakers.
+**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
 
-This repository contains useful utilities for adding said failsafes.
+Foundry consists of:
 
-## Mutability
-Once an exploit is found, there should be a way to patch them but there arises a problem of mutability. 
-If the contract is completely mutable, it is prone to rugs, incorrect parameterization, and backwards-compat breaks.
-If the contract is completely immutable, once a bug if found the contract is dead. It is a race against time for users
-to salvage what they can, and this shouldn't be the user's responsibility.
+-   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
+-   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
+-   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
+-   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
 
-Time-gating is the middle ground. We split into 4 categories.
-1. Un-gated
-2. Short-gated
-3. Medium-gated
-4. Long-gated
+## Documentation
 
-### Un-gated operations
-Method halts, blacklists, and complete circuit breakers are un-gated. Contract admins can't rug or modify
-the contract, but can cease operations. Admins stand to gain nothing here except for securing the protocol. Perhaps a really bad-actor 
-wants to permanently halt a protocol. This is why all halts should have a deadline, and subsequent halts require a quorum.
+https://book.getfoundry.sh/
 
-Halts can also be undone through governance approval. Unhalts are typically short-gated operations. Halting privileges can also be revoked through governance.
+## Usage
 
-### Short-gated operations.
-Minute parameter changes can be gated for just a short period of time. The duration allows other participants to validate the parameters.
-This time duration is on the duration of hours to days. Changes can be veto'd by anyone with veto power (typically OpSec teams and the DAO). 
+### Build
 
-### Medium-gated operations.
-Minor code changes usually through Facet cuts (EIP-2535). These require a sizeable amount of time to review, and often require governance approval.
-They should first be proposed and reviewed by white-hats. Can be vetoed. Gating duration usually on the order of days.
+```shell
+$ forge build
+```
 
-### Long-gated Operations.
-Very significant code changes. Almost always facet cuts. They require multiple audits and governance approval. Can be vetoed.
-Gating duration is on the order of weeks.
+### Test
 
+```shell
+$ forge test
+```
 
+### Format
+
+```shell
+$ forge fmt
+```
+
+### Gas Snapshots
+
+```shell
+$ forge snapshot
+```
+
+### Anvil
+
+```shell
+$ anvil
+```
+
+### Deploy
+
+```shell
+$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```
+
+### Cast
+
+```shell
+$ cast <subcommand>
+```
+
+### Help
+
+```shell
+$ forge --help
+$ anvil --help
+$ cast --help
+```
