@@ -11,6 +11,17 @@ If you want further gas optimized, consider using the roles from Solady.
 
 This is best used in conjunction with other OpSec measures like circuit breakers.
 
+## Getting Started
+
+```sh
+forge install --no-commit itos-finance/TimeGatedMutability@v0.1.0
+```
+
+Then I recommend adding this to your remappings.txt to shorten imports.
+```text
+@itos/tgm/=lib/TimeGatedMutability/src/
+```
+
 ## Security
 Our prescriptive stance is that human-reviewed security can be good but is never 100% secure.
 It is irresponsible for smart contracts to not include operational failsafes like circuit-breakers.
