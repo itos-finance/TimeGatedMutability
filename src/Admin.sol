@@ -21,6 +21,7 @@ interface IERC173 {
 }
 
 /// These are flags that can be joined so each is assigned its own hot bit.
+/// Users should make more flags in their own library.
 /// @dev These flags get the very top bits so that user specific flags are given the lower bits.
 library AdminFlags {
     uint256 public constant NULL = 0; // No clearance at all. Default value.
